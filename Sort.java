@@ -98,11 +98,23 @@ public class Sort{
 
 
 
-
      // 3 . Reverse Insertion Sort  in decennding order
 
 
+    public static void InsertionSortR(int arr[]) {
+        for (int i = 1 ; i< arr.length; i++) {
+            int curr = arr[i];
+            int prev = i-1;
 
+            while (prev>=0 && arr[prev] < curr) {
+                arr[prev + 1] = arr[prev];
+                prev--;
+            }
+
+            arr[prev + 1] = curr;
+
+        }
+    }
 
     //  4 . Counting Sort
 
@@ -128,6 +140,35 @@ public class Sort{
              }
         }
     }
+
+
+     // 4. Counting Sort  in decennding order
+
+
+     public static void CountingSortR(int arr[]) {
+        int largest = Integer.MIN_VALUE;
+        for (int i = 0 ; i< arr.length; i++) {
+            largest =Math.max(largest, arr[i]);
+        }
+
+        int count[] = new int[largest + 1];
+
+        for (int i = 0; i<arr.length; i++) {
+            count[arr[i]]++;
+        }
+
+        int j = 0;
+
+        for (int i = count.length-1; i>=0 ;i--) {
+            while(count[i] >0) {
+                arr[j ] = i;
+                j++;
+                count[i]--;
+            }
+        }
+     }
+
+
     
 
 
@@ -148,11 +189,14 @@ public class Sort{
         }
         System.out.println();
 
-        // reverseSelection(arr);
+        reverseSelection(arr);
 
-       // BubbleSortR(arr);
+       BubbleSortR(arr);
 
-       
+       InsertionSortR(arr);
+
+       CountingSortR(arr);
+
 
         // Print sorted array
         System.out.println("Sorted array in Decending order :");
