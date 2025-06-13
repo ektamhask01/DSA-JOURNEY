@@ -5,6 +5,7 @@ public class Sort{
     // 1. BubbleSort
 
 
+
     public static void bubbleSort(int arr[]) {
         for (int i = 0; i<arr.length -1; i++) {
             for (int j =0 ; j< arr.length-1-i; j++) {
@@ -20,6 +21,23 @@ public class Sort{
         }
     }
 
+
+    
+    // 1 . Reverse BubbleSort  in decennding order
+
+
+
+    public  static  void BubbleSortR(int arr[]) {
+        for (int i = 0 ; i< arr.length-1 ; i++) {
+            for (int j = 0 ; j< arr.length-1 -i ; j++) {
+                if (arr[j]< arr[j+1] ) {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
 
     // 2. Selection Sort 
 
@@ -41,7 +59,28 @@ public class Sort{
     }
 
 
+    // 2. Reverse Selection Sort  in decennding order
+
+    public static void  reverseSelection (int arr[]) {
+        for (int i =0 ; i<arr.length-1; i++) {
+            int maxEle = i;
+            for(int j = i+1 ; j<= arr.length-1; j++) {
+                if (arr[maxEle] < arr[j]) {
+                    maxEle = j;
+                }
+            }
+
+            int temp = arr[maxEle];
+            arr[maxEle] = arr[i];
+            arr[i] = temp;
+
+        }
+    }
+
+
     // 3. Insertion Sort
+
+
 
     public static void InsertionSort (int arr[]) {
         for (int i =1 ; i< arr.length ; i++) {
@@ -56,6 +95,12 @@ public class Sort{
             arr[prev + 1] = curr;
         }
     }
+
+
+
+
+     // 3 . Reverse Insertion Sort  in decennding order
+
 
 
 
@@ -84,8 +129,10 @@ public class Sort{
         }
     }
     
+
+
     public static void main(String[] args) {
-        int arr[] = {5, 4, 1, 3, 2};
+        int arr[] = {15, 40, 71, 3, 92};
 
         bubbleSort(arr);   // Call 
 
@@ -95,9 +142,24 @@ public class Sort{
 
        CountingSort(arr); // Call
         // Print sorted array
-        System.out.println("Sorted array:");
-        for (int num : arr) {
-            System.out.print(num + " ");
+        System.out.println("Sorted array in Acending order :");
+        for (int i = 0 ; i<arr.length; i++) {
+            System.out.print(arr[i] + " ");
         }
+        System.out.println();
+
+        // reverseSelection(arr);
+
+       // BubbleSortR(arr);
+
+       
+
+        // Print sorted array
+        System.out.println("Sorted array in Decending order :");
+        for (int i = 0 ; i<arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+
+
     }
 }
