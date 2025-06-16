@@ -1,4 +1,4 @@
-import java.lang.reflect.MalformedParameterizedTypeException;
+
 import java.util.*;
 
 public class DigonalAddition {
@@ -24,7 +24,7 @@ public class DigonalAddition {
 
         // Optimized code of O(n ) time complexity
 
-        
+
         for (int i = 0 ; i< matrix.length; i++) {
 
             // Primatry diagonal
