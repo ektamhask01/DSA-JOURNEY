@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class palindrome {
     public static  boolean palindrome(String str) {
         for (int i = 0 ; i<str.length()/2 ; i++) {
@@ -7,7 +6,6 @@ public class palindrome {
                 System.out.println("String is not palindrome");
                 return false;
             }
-
         }
         System.out.println("Sting is pallindrome ");
         return true;
@@ -18,6 +16,6 @@ public class palindrome {
         System.out.print("Enter string to check palindrome or not : ");
         str = sc.nextLine();
         palindrome(str);
-        
     }
 }
+
