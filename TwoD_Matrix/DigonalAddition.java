@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 public class DigonalAddition {
@@ -7,7 +6,6 @@ public class DigonalAddition {
         int sum = 0;
          
         // O (n^2 time complexity)
-
 
         // for (int i = 0; i<matrix.length ; i++) {
         //     for (int j = 0 ; j<matrix[0].length; j++) {

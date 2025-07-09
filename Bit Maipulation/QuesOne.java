@@ -35,15 +35,32 @@ public class QuesOne {
     }
 
 
+    // Clear ith Bit
+
+    public static int clearIthBit(int n, int i) {
+        int bitMask = ~(1<<i);
+        return n & bitMask;
+    }
+
+
+    // Clear i bits
+
+    public static int clearIthBits(int n, int i ) {
+        int bitMask =((-1) << i);
+        return n & bitMask;
+
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter no : ");
         int n = sc.nextInt();
         System.out.print("Enter i : ");
         int i = sc.nextInt();
-        //oddEven(n);
-        //System.out.println(getIthBit(n, 2));
+        oddEven(n);
+        System.out.println(getIthBit(n, 2));
         System.out.println(setIthBit(n, i));
-
+        System.out.println(clearIthBit(n, i));
+        System.out.println(clearIthBits(n, i));
+        
      }
 }
