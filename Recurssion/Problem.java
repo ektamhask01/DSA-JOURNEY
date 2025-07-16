@@ -46,7 +46,7 @@ public class Problem {
         String str = "appnnacollege";
         //System.out.println(tillingProblem(n));
         boolean[] map = new boolean[26];
-        removeDuplicates(str, 0, new StringBuilder(""), map);
-
+        removeDuplicates(str, 0, new StringBuilder(""), map) ;
+        
     }
 }
