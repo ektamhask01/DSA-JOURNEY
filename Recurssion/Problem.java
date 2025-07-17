@@ -8,21 +8,22 @@ public class Problem {
         if (n ==0 || n==1) {
             return 1;
         }
-        // vertical Tile arrangement
+        // // vertical Tile arrangement
 
-        int verticle = tillingProblem(n-1);
+        // int verticle = tillingProblem(n-1);
 
-        // Horizontal tile arrangement
+        // // Horizontal tile arrangement
 
-        int horizontal = tillingProblem(n-2);
+        // int horizontal = tillingProblem(n-2);
 
-        // Total ways 
+        // // Total ways 
 
-        int total = verticle + horizontal;
-        return  total;
+        // int total = verticle + horizontal;
+        // return  total;
+        return tillingProblem(n-1) + tillingProblem(n-2) ;
     }
 
-    // 2. Remove duplicates
+    // 2. Remove duplicates asked in google and microsoft
 
     public static void removeDuplicates(String str , int idx, StringBuilder newStr, boolean map[] ) {
         if (idx == str.length()) {
