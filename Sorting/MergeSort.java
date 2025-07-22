@@ -7,6 +7,7 @@ public class MergeSort {
         System.out.println();
     }
 
+
     public static void merge(int arr[], int start, int mid , int end) {
         int temp[] = new int [end - start + 1] ;
         int i = start; // iterator for  left part
@@ -20,13 +21,17 @@ public class MergeSort {
                 temp[k] = arr[j];
                 j++;
             }
+
             k++;
+
         }
+
         // for left part
+
         while(i <= mid) {
             temp[k++] = arr[i++];
         }
-
+        
         // for right part
 
         while (j<= end) {
@@ -39,21 +44,24 @@ public class MergeSort {
             arr[i] = temp[k];
         }
 
+
     }
     
     public static void mergeSort(int arr[] , int start, int end ) {
         if (start >= end ) {
             return ;
         }
+
         int mid = start + (end - start) / 2;
         mergeSort(arr, start , mid ); // left part
         mergeSort(arr,mid +1 , end); // right part
 
         merge(arr, start,mid, end);
-        
+ 
     }
+
     public static void main(String[] args) {
-        int arr[] = { 6, 3, 9, 5, 2, 8};
+        int arr[] = { 6, 3, 9, 5, 2, 8,-2,};
         mergeSort(arr, 0, arr.length-1);
         printArray(arr);
 
