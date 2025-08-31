@@ -28,23 +28,28 @@ public class nQueenProblem {
         return true;
     }
 
-    public static void nQueen(char board[][] , int row) {
+    public static boolean nQueen(char board[][] , int row) {
         // base 
         if (row == board.length) {
-            printBoard(board);
-            return;
+             printBoard(board);
+            count ++;
+            return true;
         }
 
         // column loop
         for (int  j = 0; j < board.length; j++) {
           if (isSafe(board, row, j)) {
              board[row][j] = 'Q';
-            nQueen(board, row+1); // function call
+           if ( nQueen(board, row+1)) {
+            return true;
+           }
             board[row ][j] = '_'; // backtracking step
           }
         } 
+        return false;
     }
 
+    static int count = 0;
     // Print board
 
     public static void printBoard(char board[][]) {
@@ -56,11 +61,11 @@ public class nQueenProblem {
             }
             System.out.println();
         }
-        
+
     }
 
     public static void main(String[] args) {
-        int n = 5;
+        int n = 4;
         char board[][] = new char[n][n];
 
         // Initialize
@@ -72,6 +77,8 @@ public class nQueenProblem {
             
         }
 
+     
         nQueen(board , 0);
+        System.out.println("total no. of ways : " + count);
     }
 }
