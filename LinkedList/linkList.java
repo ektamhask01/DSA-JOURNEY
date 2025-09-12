@@ -199,15 +199,12 @@ public class linkList {
             return helper(head , key);
         }
 
-
-
         // REVERSE THE LINKED LIST
 
         public void reverse() {
             Node prev = null;
             Node curr = tail = head;
             Node next ;
-
             while( curr != null) {
                 next = curr.next;
                 curr.next = prev ; // main reversing statement
@@ -215,9 +212,7 @@ public class linkList {
                 curr = next;
             }
             head = prev;
-
         }
-
 
 
         // Question : Delete Nth Node from End 
