@@ -241,16 +241,132 @@ public class linkList {
         return;
     }
 
+
+    // CHECK IF LINKED LIST IS PALINDROME OR NOT
+
+    public Node findMid(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow; // slow is middle
+    }
+
+    public boolean checkPallindrome() {
+        if (head == null || head.next == null) {
+            return true;
+        }
+
+        // step 1 : Find mid
+        Node midNode = findMid(head);
+
+        // step 2 : reverse 2nd half
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node right = prev; // right half head
+        Node left = head;
+
+
+
+        // step 3: check left and right half  if palindrome or not
+
+        while (right != null) {
+            if (left.data != right.data ) {
+                return false;
+            } 
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+
+
+
+    // DETECT CYCLE EXIST OR NOT
+
+    public static boolean DetectCycle() {
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                System.out.println("Cycle exist");
+                return true;
+            }
+        }
+        System.out.println("Cycle not exist");
+        return false;
+    }
+
+
+    public static void removeCycle() {
+
+        // detect cycle
+        Node slow = head ;
+        Node fast = head;
+        boolean cycle = false;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast ) {
+                cycle = true;
+                break;
+            }
+        }
+
+        if (cycle == false ) {
+            return;
+        }
+
+        // Find meeting point
+
+        slow = head;
+        Node prev = null; // last node
+        while (slow != fast) {
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        // remove cycle
+        prev.next = null;
+
+    }
+
+
+
+
     public static void main(String[] args) {
-        linkList  obj = new linkList();
-        int index = 3;
-        int n  = 3;
-        obj.addFirst(3);
-        obj.addFirst(2);
-        obj.addFirst(1);
-        obj.addLast(4);
-        obj.addLast(5);
-        obj.add(6, index);
+
+        head = new Node(1);
+        Node temp = new Node (2);
+        head.next = temp;
+        head.next.next = new Node(3);
+        head.next.next.next = temp;
+
+        //linkList  obj = new linkList();
+        // int index = 3;
+        // int n  = 3;
+        // obj.addFirst(3);
+        // obj.addFirst(2);
+        // obj.addFirst(1);
+        // obj.addLast(2);
+        // obj.addLast(1);
+        // obj.add(6, index);
         // obj.print();
         // obj.removeFirst();
         // obj.print();
@@ -258,9 +374,12 @@ public class linkList {
         // System.out.println(obj.removeLast());
         // obj.searchIterative(key);
         // System.out.println(obj.recurssiveSearch(key));
-        obj.print();
-        obj.deleteNthfromEnd(n);
-        obj.print();
-        
+        // obj.print();
+        // obj.deleteNthfromEnd(n);
+        // obj.print();
+        // System.out.println(obj.checkPallindrome());
+        System.out.print(DetectCycle());
+        removeCycle();
+        System.out.println(DetectCycle());
     }
 }
