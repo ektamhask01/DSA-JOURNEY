@@ -1,4 +1,4 @@
-public class MergeSortLL {
+public  class zigzagLL {
 
         public static class Node{
         int data;
@@ -54,70 +54,68 @@ public class MergeSortLL {
             fast = fast.next.next;
         }
 
-        return slow;
-        
+        return slow;   
     }
 
-    private Node merge(Node head1 , Node head2) {
-        Node mergeLL = new Node(-1);
-        Node temp = mergeLL;
-        while (head1 != null && head2 != null) {
-            if (head1.data <= head2.data) {
-                temp.next =  head1;
-                head1 = head1.next;
-                temp = temp.next;
-            } else  {
-                temp.next =  head2;
-                head2 = head2.next;
-                temp = temp.next;
-            }
-        }
+    
 
-        while (head1 != null) {
-             temp.next =  head1;
-            head1 = head1.next;
-            temp = temp.next;
-        }
-
-        while (head2 != null) {
-             temp.next =  head2;
-            head2 = head2.next;
-            temp = temp.next;
-        }
-
-        return  mergeLL.next;
-    }
-
-    public Node mergeSort(Node head) {
+    public void zigzag() {
         if (head == null || head.next == null) {
-            return head;
+            return ;
         }
-        // find mid
+        //1.  find mid
         Node mid = Findmid( head);
-        //left & right half  merge sort
 
-        Node rightHead = mid.next;
+
+        // 2. reverse 2nd half
+        Node curr= mid.next;
         mid.next = null;
-        Node newLeft = mergeSort(head);
-        Node newRight = mergeSort(rightHead);
+        Node prev = null;
+        Node next ;
 
-        // merge
-        return merge(newLeft , newRight);
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
 
+        // 3. alternate merging
+
+        Node rightHead = prev;
+        Node leftHead = head;
+        Node nextL;
+        Node nextR;
+
+
+        while ( leftHead != null && rightHead != null) {
+            // zigzag code
+            nextL = leftHead.next;
+            leftHead.next =rightHead;
+            nextR = rightHead.next;
+            rightHead.next = nextL;
+
+            // Update left head and right head
+            rightHead = nextR;
+            leftHead = nextL;
+
+        }
+  
 
     }
     public static void main(String[] args) {
-        MergeSortLL list = new MergeSortLL();
+        zigzagLL list = new zigzagLL();
 
         list.addFirst(3);
         list.addFirst(2);
         list.addFirst(4);
         list.addFirst(1);
         list.addFirst(5);
-        list.addFirst(4);
+        
         
         list.print();
-        head = list.mergeSort(head);
+        list.zigzag();
         list.print();
     }
 }
+ 
