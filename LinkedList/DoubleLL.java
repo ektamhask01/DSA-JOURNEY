@@ -122,6 +122,8 @@ public class DoubleLL {
             prev = curr;
             curr = next;
         }
+
+        head = prev;
     }
     
     public static void main(String[] args) {
@@ -132,8 +134,9 @@ public class DoubleLL {
         dll.print();
         //dll.removeFirst();
         // dll.removeLast();
-        // dll.print();
-        dll.reverse();
+       
+        dll.reverse(); 
+        dll.print();
         
 
     }
