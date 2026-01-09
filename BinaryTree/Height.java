@@ -78,7 +78,8 @@ public class Height {
         }
     }
 
-    public static TreeInfo diameter2(Node root) {
+    public 
+    static TreeInfo diameter2(Node root) {
         if (root == null) {
             return new TreeInfo(0 , 0);
         }
